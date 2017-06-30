@@ -1,4 +1,4 @@
-package com.jonathnpetitfrere.mvvm.persistence.entity;
+package com.jonathanpetitfrere.mvvm.persistence.entity;
 
 import android.arch.persistence.room.ColumnInfo;
 import android.arch.persistence.room.Entity;

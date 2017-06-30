@@ -1,5 +1,5 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
-    package="com.jonathnpetitfrere.mvvm">
+    package="com.jonathanpetitfrere.mvvm">
 
     <application
         android:name=".MvvmApplication"

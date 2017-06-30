@@ -1,10 +1,10 @@
-package com.jonathnpetitfrere.mvvm.ui.main;
+package com.jonathanpetitfrere.mvvm.ui.main;
 
 import android.app.Application;
 import android.arch.lifecycle.LiveData;
 
-import com.jonathnpetitfrere.mvvm.persistence.entity.User;
-import com.jonathnpetitfrere.mvvm.ui.base.BaseAndroidViewModel;
+import com.jonathanpetitfrere.mvvm.persistence.entity.User;
+import com.jonathanpetitfrere.mvvm.ui.base.BaseAndroidViewModel;
 
 /**
  * @author jpetit

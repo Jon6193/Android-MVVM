@@ -1,4 +1,4 @@
-package com.jonathnpetitfrere.mvvm.ui.base;
+package com.jonathanpetitfrere.mvvm.ui.base;
 
 import android.arch.lifecycle.ViewModel;
 

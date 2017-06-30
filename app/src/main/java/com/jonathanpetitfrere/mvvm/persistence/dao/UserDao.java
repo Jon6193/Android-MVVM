@@ -1,4 +1,4 @@
-package com.jonathnpetitfrere.mvvm.persistence.dao;
+package com.jonathanpetitfrere.mvvm.persistence.dao;
 
 import android.arch.lifecycle.LiveData;
 import android.arch.persistence.room.Dao;
@@ -6,7 +6,7 @@ import android.arch.persistence.room.Insert;
 import android.arch.persistence.room.OnConflictStrategy;
 import android.arch.persistence.room.Query;
 
-import com.jonathnpetitfrere.mvvm.persistence.entity.User;
+import com.jonathanpetitfrere.mvvm.persistence.entity.User;
 
 /**
  * @author jpetit

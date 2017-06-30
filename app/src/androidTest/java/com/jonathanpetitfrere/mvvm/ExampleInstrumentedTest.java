@@ -1,4 +1,4 @@
-package com.jonathnpetitfrere.mvvm;
+package com.jonathanpetitfrere.mvvm;
 
 import android.content.Context;
 import android.support.test.InstrumentationRegistry;

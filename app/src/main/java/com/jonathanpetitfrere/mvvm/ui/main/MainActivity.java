@@ -1,11 +1,11 @@
-package com.jonathnpetitfrere.mvvm.ui.main;
+package com.jonathanpetitfrere.mvvm.ui.main;
 
 import android.arch.lifecycle.ViewModelProviders;
 import android.os.Bundle;
 import android.widget.Toast;
 
-import com.jonathnpetitfrere.mvvm.R;
-import com.jonathnpetitfrere.mvvm.ui.base.BaseActivity;
+import com.jonathanpetitfrere.mvvm.R;
+import com.jonathanpetitfrere.mvvm.ui.base.BaseActivity;
 
 /**
  * @author jpetit

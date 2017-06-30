@@ -1,9 +1,9 @@
-package com.jonathnpetitfrere.mvvm;
+package com.jonathanpetitfrere.mvvm;
 
 import android.app.Application;
 import android.arch.persistence.room.Room;
 
-import com.jonathnpetitfrere.mvvm.persistence.MvvmDatabase;
+import com.jonathanpetitfrere.mvvm.persistence.MvvmDatabase;
 
 /**
  * @author jpetit

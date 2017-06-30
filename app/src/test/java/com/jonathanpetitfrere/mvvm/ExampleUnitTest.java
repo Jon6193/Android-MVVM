@@ -1,4 +1,4 @@
-package com.jonathnpetitfrere.mvvm;
+package com.jonathanpetitfrere.mvvm;
 
 import org.junit.Test;
 
