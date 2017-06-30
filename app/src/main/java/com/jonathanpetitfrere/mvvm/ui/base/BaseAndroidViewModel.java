@@ -19,8 +19,4 @@ public abstract class BaseAndroidViewModel extends AndroidViewModel {
     protected MvvmApplication getMvvmApplication() {
         return (MvvmApplication) getApplication();
     }
-
-    protected MvvmDatabase getMvvmDatabase() {
-        return getMvvmApplication().getMvvmDatabase();
-    }
 }
