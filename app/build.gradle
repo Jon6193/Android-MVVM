@@ -1,4 +1,5 @@
 apply plugin: 'com.android.application'
+apply plugin: "me.tatarka.retrolambda"
 
 android {
     compileSdkVersion 25
@@ -13,17 +14,29 @@ android {
     }
 
     buildTypes {
+
+        debug {
+            applicationIdSuffix ".debug"
+        }
+
         release {
             minifyEnabled false
             proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
         }
     }
+
+    compileOptions {
+        targetCompatibility 1.8
+        sourceCompatibility 1.8
+    }
+
 }
 
 
 ext {
     supportVersion = '25.3.1'
     architectureVersion = '1.0.0-alpha3'
+    constraintLayoutVersion = '1.0.2'
     butterknifeVersion = '8.6.0'
     daggerVersion = '2.7'
     gsonVersion = '2.7'
@@ -33,6 +46,9 @@ dependencies {
     compile fileTree(dir: 'libs', include: ['*.jar'])
 
     compile "com.android.support:appcompat-v7:$supportVersion"
+    compile "com.android.support:design:$supportVersion"
+
+    compile "com.android.support.constraint:constraint-layout:$constraintLayoutVersion"
 
     compile "android.arch.lifecycle:runtime:$architectureVersion"
     compile "android.arch.lifecycle:extensions:$architectureVersion"
