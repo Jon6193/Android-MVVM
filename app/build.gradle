@@ -24,22 +24,22 @@ android {
 ext {
     supportVersion = '25.3.1'
     architectureVersion = '1.0.0-alpha3'
-    butterknifeVersion = '8.5.1'
-    okHttpVersion = '3.4.1'
+    butterknifeVersion = '8.6.0'
     daggerVersion = '2.7'
     gsonVersion = '2.7'
 }
 
 dependencies {
     compile fileTree(dir: 'libs', include: ['*.jar'])
-    androidTestCompile('com.android.support.test.espresso:espresso-core:2.2.2', {
-        exclude group: 'com.android.support', module: 'support-annotations'
-    })
 
     compile "com.android.support:appcompat-v7:$supportVersion"
+
     compile "android.arch.lifecycle:runtime:$architectureVersion"
     compile "android.arch.lifecycle:extensions:$architectureVersion"
     annotationProcessor "android.arch.lifecycle:compiler:$architectureVersion"
+
+    compile "android.arch.persistence.room:runtime:$architectureVersion"
+    annotationProcessor "android.arch.persistence.room:compiler:$architectureVersion"
 
     compile "com.google.dagger:dagger:$daggerVersion"
     annotationProcessor "com.google.dagger:dagger-compiler:$daggerVersion"
@@ -50,4 +50,8 @@ dependencies {
     annotationProcessor "com.jakewharton:butterknife-compiler:$butterknifeVersion"
 
     testCompile 'junit:junit:4.12'
+
+    androidTestCompile('com.android.support.test.espresso:espresso-core:2.2.2', {
+        exclude group: 'com.android.support', module: 'support-annotations'
+    })
 }
