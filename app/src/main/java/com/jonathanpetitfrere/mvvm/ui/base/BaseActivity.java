@@ -18,7 +18,7 @@ public abstract class BaseActivity extends LifecycleActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(getLayoutResId());
+        setContentView(getLayoutRes());
         unbinder = ButterKnife.bind(this);
     }
 
@@ -29,5 +29,5 @@ public abstract class BaseActivity extends LifecycleActivity {
     }
 
     @LayoutRes
-    public abstract int getLayoutResId();
+    public abstract int getLayoutRes();
 }

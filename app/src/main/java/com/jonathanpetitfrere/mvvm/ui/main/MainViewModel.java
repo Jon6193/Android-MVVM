@@ -7,6 +7,8 @@ import com.jonathanpetitfrere.mvvm.persistence.MvvmDatabase;
 import com.jonathanpetitfrere.mvvm.persistence.entity.User;
 import com.jonathanpetitfrere.mvvm.ui.base.BaseAndroidViewModel;
 
+import java.util.List;
+
 import javax.inject.Inject;
 
 /**
@@ -23,12 +25,16 @@ public class MainViewModel extends BaseAndroidViewModel {
         getMvvmApplication().getComponent().inject(this);
     }
 
-    public void updateUser(User user) {
+    public void createUser(User user) {
         database.userDao().saveUser(user);
     }
 
     public LiveData<User> getUser(String email) {
         return database.userDao().loadUser(email);
+    }
+
+    public LiveData<List<User>> getUsers() {
+        return database.userDao().getUsers();
     }
 
 }

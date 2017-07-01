@@ -35,7 +35,7 @@ public class ApiModule {
                     .addNetworkInterceptor(new HttpLoggingInterceptor().setLevel(HttpLoggingInterceptor.Level.BODY))
                     .addNetworkInterceptor(new StethoInterceptor());
         }
-        
+
         return okHttpClientBuilder.build();
     }
 

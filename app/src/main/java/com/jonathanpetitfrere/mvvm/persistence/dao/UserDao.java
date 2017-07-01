@@ -8,6 +8,8 @@ import android.arch.persistence.room.Query;
 
 import com.jonathanpetitfrere.mvvm.persistence.entity.User;
 
+import java.util.List;
+
 /**
  * @author jpetit
  */
@@ -20,4 +22,7 @@ public interface UserDao {
 
     @Insert(onConflict = OnConflictStrategy.REPLACE)
     void saveUser(User user);
+
+    @Query("SELECT * FROM user")
+    LiveData<List<User>> getUsers();
 }
