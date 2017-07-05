@@ -3,7 +3,7 @@ package com.jonathanpetitfrere.mvvm.ui.main;
 import android.view.View;
 
 import com.jonathanpetitfrere.mvvm.R;
-import com.jonathanpetitfrere.mvvm.persistence.entity.User;
+import com.jonathanpetitfrere.mvvm.repository.persistence.entity.User;
 import com.jonathanpetitfrere.mvvm.ui.base.BaseRecyclerAdapter;
 
 /**

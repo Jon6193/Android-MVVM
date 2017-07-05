@@ -1,10 +1,10 @@
-package com.jonathanpetitfrere.mvvm.persistence;
+package com.jonathanpetitfrere.mvvm.repository.persistence;
 
 import android.arch.persistence.room.Database;
 import android.arch.persistence.room.RoomDatabase;
 
-import com.jonathanpetitfrere.mvvm.persistence.dao.UserDao;
-import com.jonathanpetitfrere.mvvm.persistence.entity.User;
+import com.jonathanpetitfrere.mvvm.repository.persistence.dao.UserDao;
+import com.jonathanpetitfrere.mvvm.repository.persistence.entity.User;
 
 /**
  * @author jpetit

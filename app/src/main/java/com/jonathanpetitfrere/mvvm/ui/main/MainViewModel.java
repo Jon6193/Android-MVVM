@@ -3,8 +3,8 @@ package com.jonathanpetitfrere.mvvm.ui.main;
 import android.app.Application;
 import android.arch.lifecycle.LiveData;
 
-import com.jonathanpetitfrere.mvvm.persistence.MvvmDatabase;
-import com.jonathanpetitfrere.mvvm.persistence.entity.User;
+import com.jonathanpetitfrere.mvvm.repository.UserRepository;
+import com.jonathanpetitfrere.mvvm.repository.persistence.entity.User;
 import com.jonathanpetitfrere.mvvm.ui.base.BaseAndroidViewModel;
 
 import java.util.List;
@@ -18,23 +18,23 @@ import javax.inject.Inject;
 public class MainViewModel extends BaseAndroidViewModel {
 
     @Inject
-    MvvmDatabase database;
+    UserRepository userRepository;
 
     public MainViewModel(Application application) {
         super(application);
         getMvvmApplication().getComponent().inject(this);
     }
 
-    public void createUser(User user) {
-        database.userDao().saveUser(user);
+    public LiveData<Boolean> createUser(User user) {
+        return userRepository.saveUser(user);
     }
 
     public LiveData<User> getUser(String email) {
-        return database.userDao().loadUser(email);
+        return userRepository.getUser(email);
     }
 
     public LiveData<List<User>> getUsers() {
-        return database.userDao().getUsers();
+        return userRepository.getUsers();
     }
 
 }

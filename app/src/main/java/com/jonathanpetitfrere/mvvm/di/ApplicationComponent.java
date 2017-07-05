@@ -10,7 +10,8 @@ import dagger.Component;
 @Singleton
 @Component(modules = {
         ApplicationModule.class,
-        ApiModule.class
+        ApiModule.class,
+        RepositoryModule.class
 })
 public interface ApplicationComponent extends AppGraph {
 

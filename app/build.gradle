@@ -11,6 +11,13 @@ android {
         versionCode 1
         versionName "1.0"
         testInstrumentationRunner "android.support.test.runner.AndroidJUnitRunner"
+
+        javaCompileOptions {
+            annotationProcessorOptions {
+                arguments = ["room.schemaLocation":
+                                     "$projectDir/schemas".toString()]
+            }
+        }
     }
 
     buildTypes {
@@ -60,6 +67,7 @@ dependencies {
     annotationProcessor "android.arch.lifecycle:compiler:$architectureVersion"
 
     compile "android.arch.persistence.room:runtime:$architectureVersion"
+    compile "android.arch.persistence.room:rxjava2:$architectureVersion"
     annotationProcessor "android.arch.persistence.room:compiler:$architectureVersion"
 
     compile 'io.reactivex.rxjava2:rxandroid:2.0.1'
@@ -72,6 +80,7 @@ dependencies {
 
     compile "com.squareup.retrofit2:retrofit:$retrofitVersion"
     compile "com.squareup.retrofit2:converter-gson:$retrofitVersion"
+    compile "com.squareup.retrofit2:adapter-rxjava2:$retrofitVersion"
 
     compile "com.squareup.okhttp3:okhttp:$okHttpVersion"
     compile "com.squareup.okhttp3:logging-interceptor:$okHttpVersion"

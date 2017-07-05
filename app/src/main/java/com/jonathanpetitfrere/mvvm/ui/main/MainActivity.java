@@ -7,11 +7,12 @@ import android.support.v7.widget.RecyclerView;
 import android.widget.Toast;
 
 import com.jonathanpetitfrere.mvvm.R;
-import com.jonathanpetitfrere.mvvm.persistence.entity.User;
+import com.jonathanpetitfrere.mvvm.repository.persistence.entity.User;
 import com.jonathanpetitfrere.mvvm.ui.base.BaseActivity;
 
 import butterknife.BindView;
 import butterknife.OnClick;
+import timber.log.Timber;
 
 /**
  * @author jpetit

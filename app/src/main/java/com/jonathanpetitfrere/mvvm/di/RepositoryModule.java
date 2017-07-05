@@ -1,10 +1,8 @@
 package com.jonathanpetitfrere.mvvm.di;
 
-import android.app.Application;
 import android.arch.persistence.room.Room;
 import android.content.Context;
 
-import com.jonathanpetitfrere.mvvm.MvvmApplication;
 import com.jonathanpetitfrere.mvvm.repository.persistence.MvvmDatabase;
 import com.jonathanpetitfrere.mvvm.repository.persistence.dao.UserDao;
 
@@ -18,23 +16,18 @@ import dagger.Provides;
  */
 
 @Module
-public class ApplicationModule {
+public class RepositoryModule {
 
-    private final MvvmApplication application;
-
-    public ApplicationModule(MvvmApplication application) {
-        this.application = application;
+    @Singleton
+    @Provides
+    MvvmDatabase provideMvvmDatabase(Context context) {
+        return Room.databaseBuilder(context.getApplicationContext(), MvvmDatabase.class, MvvmDatabase.class.getSimpleName())
+                .build();
     }
 
     @Singleton
     @Provides
-    Application provideApplication() {
-        return this.application;
-    }
-
-    @Singleton
-    @Provides
-    Context provideContext() {
-        return this.application;
+    UserDao provideUserDao(MvvmDatabase mvvmDatabase) {
+        return mvvmDatabase.userDao();
     }
 }

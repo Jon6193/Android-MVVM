@@ -4,7 +4,9 @@ import android.app.Application;
 import android.arch.lifecycle.AndroidViewModel;
 
 import com.jonathanpetitfrere.mvvm.MvvmApplication;
-import com.jonathanpetitfrere.mvvm.persistence.MvvmDatabase;
+
+import io.reactivex.disposables.CompositeDisposable;
+import io.reactivex.internal.disposables.DisposableContainer;
 
 /**
  * @author jpetit
@@ -12,11 +14,27 @@ import com.jonathanpetitfrere.mvvm.persistence.MvvmDatabase;
 
 public abstract class BaseAndroidViewModel extends AndroidViewModel {
 
+    private CompositeDisposable compositeDisposable;
+
     public BaseAndroidViewModel(Application application) {
         super(application);
     }
 
     protected MvvmApplication getMvvmApplication() {
         return (MvvmApplication) getApplication();
+    }
+
+    protected CompositeDisposable disposables() {
+        if(compositeDisposable == null || compositeDisposable.isDisposed()) {
+            compositeDisposable = new CompositeDisposable();
+        }
+
+        return compositeDisposable;
+    }
+
+    @Override
+    protected void onCleared() {
+        super.onCleared();
+        compositeDisposable.dispose();
     }
 }

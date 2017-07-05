@@ -6,7 +6,7 @@ import android.util.AttributeSet;
 import android.widget.TextView;
 
 import com.jonathanpetitfrere.mvvm.R;
-import com.jonathanpetitfrere.mvvm.persistence.entity.User;
+import com.jonathanpetitfrere.mvvm.repository.persistence.entity.User;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
