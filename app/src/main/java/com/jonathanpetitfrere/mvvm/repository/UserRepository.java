@@ -7,6 +7,7 @@ import com.jonathanpetitfrere.mvvm.repository.api.UserApi;
 import com.jonathanpetitfrere.mvvm.repository.mapper.UserMapper;
 import com.jonathanpetitfrere.mvvm.repository.persistence.dao.UserDao;
 import com.jonathanpetitfrere.mvvm.repository.persistence.entity.User;
+import com.jonathanpetitfrere.mvvm.util.Transformers;
 
 import java.util.List;
 
@@ -14,8 +15,6 @@ import javax.inject.Inject;
 import javax.inject.Singleton;
 
 import io.reactivex.Completable;
-import io.reactivex.android.schedulers.AndroidSchedulers;
-import io.reactivex.schedulers.Schedulers;
 import timber.log.Timber;
 
 /**
@@ -35,19 +34,20 @@ public class UserRepository {
     UserMapper mapper;
 
     @Inject
+    Transformers transformers;
+
+    @Inject
     UserRepository() {}
 
     public LiveData<User> getUser(String email) {
         MutableLiveData<User> liveData = new MutableLiveData<>();
 
         userDao.loadUser(email)
-                .observeOn(AndroidSchedulers.mainThread())
-                .subscribeOn(Schedulers.io())
+                .compose(transformers.applySchedulersToFlowable())
                 .subscribe(liveData::setValue, Timber::d);
 
         userApi.getUser(email)
-                .observeOn(AndroidSchedulers.mainThread())
-                .subscribeOn(Schedulers.io())
+                .compose(transformers.applySchedulersToFlowable())
                 .map(mapper::toEntity)
                 .subscribe(userDao::saveUser, Timber::d);
 
@@ -58,13 +58,11 @@ public class UserRepository {
         MutableLiveData<List<User>> liveData = new MutableLiveData<>();
 
         userDao.getUsers()
-                .observeOn(AndroidSchedulers.mainThread())
-                .subscribeOn(Schedulers.io())
+                .compose(transformers.applySchedulersToFlowable())
                 .subscribe(liveData::setValue, Timber::d);
 
         userApi.getUsers()
-                .observeOn(AndroidSchedulers.mainThread())
-                .subscribeOn(Schedulers.io())
+                .compose(transformers.applySchedulersToFlowable())
                 .flatMapIterable(users -> users)
                 .map(mapper::toEntity)
                 .subscribe(userDao::saveUser, Timber::d);
@@ -76,8 +74,7 @@ public class UserRepository {
         MutableLiveData<Boolean> liveData = new MutableLiveData<>();
 
         Completable.fromAction(() -> userDao.saveUser(user))
-                .observeOn(AndroidSchedulers.mainThread())
-                .subscribeOn(Schedulers.io())
+                .compose(transformers.applySchedulersToCompletable())
                 .subscribe(() -> liveData.setValue(true), throwable -> {
                     Timber.d(throwable);
                     liveData.setValue(false);
