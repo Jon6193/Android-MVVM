@@ -13,7 +13,7 @@ import javax.inject.Singleton;
 public class UserMapper {
 
     @Inject
-    UserMapper() {}
+    public UserMapper() {}
 
     public User toModel(com.jonathanpetitfrere.mvvm.repository.persistence.entity.User userEntity) {
         return new User(userEntity.getEmail(), userEntity.getFirstName(), userEntity.getLastName());

@@ -4,7 +4,6 @@ import android.arch.lifecycle.ViewModelProviders;
 import android.os.Bundle;
 import android.support.design.widget.TextInputEditText;
 import android.support.v7.widget.RecyclerView;
-import android.widget.Toast;
 
 import com.jonathanpetitfrere.mvvm.R;
 import com.jonathanpetitfrere.mvvm.repository.persistence.entity.User;
@@ -12,7 +11,6 @@ import com.jonathanpetitfrere.mvvm.ui.base.BaseActivity;
 
 import butterknife.BindView;
 import butterknife.OnClick;
-import timber.log.Timber;
 
 /**
  * @author jpetit
@@ -32,7 +30,7 @@ public class MainActivity extends BaseActivity {
     @BindView(R.id.main_recycler_view)
     RecyclerView recyclerView;
 
-    private MainViewModel viewModel;
+    MainViewModel viewModel;
 
     private UserRecyclerAdapter userRecyclerAdapter;
 
@@ -43,15 +41,6 @@ public class MainActivity extends BaseActivity {
         recyclerView.setAdapter(userRecyclerAdapter);
 
         viewModel = ViewModelProviders.of(this).get(MainViewModel.class);
-        viewModel.getUser("test@gmail.com")
-                .observe(this, user -> {
-                    if(user != null) {
-                        Toast.makeText(getApplicationContext(), "Found User " + user.getEmail(), Toast.LENGTH_SHORT).show();
-
-                    } else {
-                        Toast.makeText(getApplicationContext(), "Did not find User", Toast.LENGTH_SHORT).show();
-                    }
-                });
 
         viewModel.getUsers()
                 .observe(this, userRecyclerAdapter::setData);

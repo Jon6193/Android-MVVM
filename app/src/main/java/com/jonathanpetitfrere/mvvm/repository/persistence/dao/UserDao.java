@@ -25,5 +25,5 @@ public interface UserDao {
     void saveUser(User user);
 
     @Query("SELECT * FROM user")
-    Flowable<List<User>> getUsers();
+    Flowable<List<User>> loadUsers();
 }

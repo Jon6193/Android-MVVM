@@ -5,15 +5,11 @@ import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
 import com.jonathanpetitfrere.mvvm.BuildConfig;
 import com.jonathanpetitfrere.mvvm.repository.api.UserApi;
-import com.jonathanpetitfrere.mvvm.repository.api.model.User;
-
-import java.util.List;
 
 import javax.inject.Singleton;
 
 import dagger.Module;
 import dagger.Provides;
-import io.reactivex.Flowable;
 import okhttp3.OkHttpClient;
 import okhttp3.logging.HttpLoggingInterceptor;
 import retrofit2.Retrofit;

@@ -4,13 +4,15 @@ apply plugin: "me.tatarka.retrolambda"
 android {
     compileSdkVersion 25
     buildToolsVersion "25.0.3"
+
     defaultConfig {
         applicationId "com.jonathnpetitfrere.mvvm"
         minSdkVersion 19
         targetSdkVersion 25
         versionCode 1
         versionName "1.0"
-        testInstrumentationRunner "android.support.test.runner.AndroidJUnitRunner"
+
+        testInstrumentationRunner "com.jonathanpetitfrere.mvvm.TestRunner"
 
         javaCompileOptions {
             annotationProcessorOptions {
@@ -51,6 +53,8 @@ ext {
     okHttpVersion = '3.8.1'
     stethoVersion = '1.5.0'
     leakCanaryVersion = '1.5.1'
+    espressoVersion = '2.2.2'
+    mockitoVersion = '2.6.3'
 }
 
 dependencies {
@@ -101,8 +105,24 @@ dependencies {
     compile 'com.andrewreitz.velcro:velcro-bindablerecycleradapter:2.0.0-SNAPSHOT'
 
     testCompile 'junit:junit:4.12'
+    testCompile "org.mockito:mockito-core:$mockitoVersion"
+    testCompile ("android.arch.core:core-testing:$architectureVersion", {
+        exclude group: 'com.android.support', module: 'support-compat'
+        exclude group: 'com.android.support', module: 'support-annotations'
+        exclude group: 'com.android.support', module: 'support-core-utils'
+    })
 
-    androidTestCompile('com.android.support.test.espresso:espresso-core:2.2.2', {
+    androidTestCompile("com.android.support.test.espresso:espresso-core:$espressoVersion", {
         exclude group: 'com.android.support', module: 'support-annotations'
     })
+    androidTestCompile("com.android.support.test.espresso:espresso-contrib:$espressoVersion", {
+        exclude group: 'com.android.support', module: 'support-v4'
+        exclude group: 'com.android.support', module: 'appcompat-v7'
+        exclude group: 'com.android.support', module: 'design'
+        exclude group: 'com.android.support', module: 'recyclerview-v7'
+    })
+    androidTestCompile "android.arch.core:core-testing:$architectureVersion"
+    androidTestCompile "org.mockito:mockito-android:$mockitoVersion"
+
+    androidTestAnnotationProcessor "com.google.dagger:dagger-compiler:$daggerVersion"
 }

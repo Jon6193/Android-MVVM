@@ -57,7 +57,7 @@ public class UserRepository {
     public LiveData<List<User>> getUsers() {
         MutableLiveData<List<User>> liveData = new MutableLiveData<>();
 
-        userDao.getUsers()
+        userDao.loadUsers()
                 .compose(transformers.applySchedulersToFlowable())
                 .subscribe(liveData::setValue, Timber::d);
 

@@ -1,12 +1,7 @@
 package com.jonathanpetitfrere.mvvm.di;
 
 import android.app.Application;
-import android.arch.persistence.room.Room;
 import android.content.Context;
-
-import com.jonathanpetitfrere.mvvm.MvvmApplication;
-import com.jonathanpetitfrere.mvvm.repository.persistence.MvvmDatabase;
-import com.jonathanpetitfrere.mvvm.repository.persistence.dao.UserDao;
 
 import javax.inject.Singleton;
 
@@ -20,9 +15,9 @@ import dagger.Provides;
 @Module
 public class ApplicationModule {
 
-    private final MvvmApplication application;
+    private final Application application;
 
-    public ApplicationModule(MvvmApplication application) {
+    public ApplicationModule(Application application) {
         this.application = application;
     }
 
