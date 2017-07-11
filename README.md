@@ -1,4 +1,4 @@
-# MVVM
+# Android MVVM
 
 Base Android project with an MVVM architecture using Google's architecture components.
 
