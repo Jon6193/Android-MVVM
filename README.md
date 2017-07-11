@@ -22,10 +22,6 @@ Base Android project with an MVVM architecture using Google's architecture compo
 * [Mockito](http://site.mockito.org/)  
 * [Espresso](https://google.github.io/android-testing-support-library/docs/espresso/)  
 
-## Authors
-
-* **Jonathan Petit-Frere** - [Jon6193](https://github.com/jon6193)
-
 ## License
 
 This project is licensed under the MIT License - see the [LICENSE.md](LICENSE.md) file for details
