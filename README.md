@@ -6,7 +6,7 @@ Base Android project with an MVVM architecture using Google's architecture compo
 
 * [Android Support Library](https://developer.android.com/topic/libraries/support-library/index.html)
 * [Constraint Layout](https://developer.android.com/training/constraint-layout/index.html)
-* [Android Architecture Components](https://developer.android.com/topic/libraries/architecture/index.html)- Lifecycle, LiveData, and Room 
+* [Android Architecture Components](https://developer.android.com/topic/libraries/architecture/index.html) - Lifecycle, LiveData, and Room 
 * [RxJava2](https://github.com/ReactiveX/RxJava)
 * [RxAndroid](https://github.com/ReactiveX/RxAndroid)  
 * [Dagger 2](https://google.github.io/dagger/)  
@@ -24,8 +24,8 @@ Base Android project with an MVVM architecture using Google's architecture compo
 
 ## Authors
 
-* **Jonathan Petit-Frere**-[Jon6193](https://github.com/jon6193)
+* **Jonathan Petit-Frere** - [Jon6193](https://github.com/jon6193)
 
 ## License
 
-This project is licensed under the MIT License - see the[LICENSE.md](LICENSE.md) file for details
+This project is licensed under the MIT License - see the [LICENSE.md](LICENSE.md) file for details
