@@ -6,7 +6,6 @@ import android.support.test.runner.AndroidJUnit4;
 
 import com.jonathanpetitfrere.mvvm.TestApplication;
 import com.jonathanpetitfrere.mvvm.repository.UserRepository;
-import com.jonathanpetitfrere.mvvm.repository.persistence.entity.User;
 
 import org.junit.Before;
 import org.junit.Rule;
@@ -16,6 +15,7 @@ import org.mockito.Mock;
 import org.mockito.junit.MockitoJUnit;
 import org.mockito.junit.MockitoRule;
 
+import static org.mockito.ArgumentMatchers.any;
 import static org.mockito.Mockito.only;
 import static org.mockito.Mockito.verify;
 
@@ -46,9 +46,16 @@ public class MainViewModelTest {
 
     @Test
     public void createUser() {
-        User user = new User("john.doe@gmail.com", "John", "Doe");
-        viewModel.createUser(user);
-        verify(userRepository, only()).saveUser(user);
+        String email = "john.doe@gmail.com";
+        String firstName = "John";
+        String lastName = "Doe";
+
+        viewModel.setEmail(email);
+        viewModel.setFirstName(firstName);
+        viewModel.setLastName(lastName);
+
+        viewModel.createUser();
+        verify(userRepository, only()).saveUser(any());
     }
 
     @Test
