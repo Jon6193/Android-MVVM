@@ -27,6 +27,8 @@ public class MainViewModel extends BaseAndroidViewModel {
 
     private MutableLiveData<String> lastNameLiveData = new MutableLiveData<>();
 
+    private MutableLiveData<Boolean> validInputLiveData = new MutableLiveData<>();
+
     public MainViewModel(Application application) {
         super(application);
         getMvvmApplication().getComponent().inject(this);
@@ -45,16 +47,40 @@ public class MainViewModel extends BaseAndroidViewModel {
         return userRepository.getUsers();
     }
 
+    public LiveData<Boolean> validInput() {
+        //default value
+        if(validInputLiveData.getValue() == null) {
+            validInputLiveData.setValue(false);
+        }
+
+        return validInputLiveData;
+    }
+
     public void setEmail(String email) {
         emailLiveData.setValue(email);
+        validateInput();
     }
 
     public void setFirstName(String firstName) {
         firstNameLiveData.setValue(firstName);
+        validateInput();
     }
 
     public void setLastName(String lastName) {
         lastNameLiveData.setValue(lastName);
+        validateInput();
+    }
+
+    private void validateInput() {
+        String email = emailLiveData.getValue();
+        String firstName = firstNameLiveData.getValue();
+        String lastName = lastNameLiveData.getValue();
+
+        boolean validInput = (email != null && !email.isEmpty())
+                && (firstName != null && !firstName.isEmpty())
+                && (lastName != null && !lastName.isEmpty());
+
+        validInputLiveData.setValue(validInput);
     }
 
 }

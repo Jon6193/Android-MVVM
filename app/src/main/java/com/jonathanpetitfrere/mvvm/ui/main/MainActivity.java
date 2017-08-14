@@ -5,6 +5,7 @@ import android.os.Bundle;
 import android.support.design.widget.TextInputEditText;
 import android.support.v7.widget.RecyclerView;
 import android.text.Editable;
+import android.widget.Button;
 
 import com.jonathanpetitfrere.mvvm.R;
 import com.jonathanpetitfrere.mvvm.repository.persistence.entity.User;
@@ -23,17 +24,11 @@ import static butterknife.OnTextChanged.Callback.AFTER_TEXT_CHANGED;
 
 public class MainActivity extends BaseActivity {
 
-    @BindView(R.id.main_email_input)
-    TextInputEditText emailInput;
-
-    @BindView(R.id.main_first_name_input)
-    TextInputEditText firstNameInput;
-
-    @BindView(R.id.main_last_name_input)
-    TextInputEditText lastNameInput;
-
     @BindView(R.id.main_recycler_view)
     RecyclerView recyclerView;
+
+    @BindView(R.id.main_create_button)
+    Button createButton;
 
     MainViewModel viewModel;
 
@@ -49,6 +44,9 @@ public class MainActivity extends BaseActivity {
 
         viewModel.getUsers()
                 .observe(this, userRecyclerAdapter::setData);
+
+        viewModel.validInput()
+                .observe(this, createButton::setEnabled);
     }
 
     @Override
