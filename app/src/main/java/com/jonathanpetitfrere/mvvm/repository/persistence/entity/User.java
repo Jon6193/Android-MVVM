@@ -3,6 +3,7 @@ package com.jonathanpetitfrere.mvvm.repository.persistence.entity;
 import android.arch.persistence.room.ColumnInfo;
 import android.arch.persistence.room.Entity;
 import android.arch.persistence.room.PrimaryKey;
+import android.support.annotation.NonNull;
 
 /**
  * @author jpetit
@@ -12,6 +13,7 @@ import android.arch.persistence.room.PrimaryKey;
 public class User {
 
     @PrimaryKey
+    @NonNull
     private String email;
 
     @ColumnInfo(name = "first_name")

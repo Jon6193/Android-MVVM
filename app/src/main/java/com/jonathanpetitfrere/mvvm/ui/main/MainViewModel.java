@@ -1,12 +1,13 @@
 package com.jonathanpetitfrere.mvvm.ui.main;
 
-import android.app.Application;
 import android.arch.lifecycle.LiveData;
 import android.arch.lifecycle.MutableLiveData;
+import android.arch.lifecycle.ViewModel;
 
 import com.jonathanpetitfrere.mvvm.repository.UserRepository;
 import com.jonathanpetitfrere.mvvm.repository.persistence.entity.User;
-import com.jonathanpetitfrere.mvvm.ui.base.BaseAndroidViewModel;
+import com.jonathanpetitfrere.mvvm.ui.base.BaseViewModel;
+import com.jonathanpetitfrere.mvvm.util.RxSchedulers;
 
 import java.util.List;
 
@@ -16,10 +17,13 @@ import javax.inject.Inject;
  * @author jpetit
  */
 
-public class MainViewModel extends BaseAndroidViewModel {
+public class MainViewModel extends BaseViewModel {
 
     @Inject
     UserRepository userRepository;
+
+    @Inject
+    RxSchedulers schedulers;
 
     private MutableLiveData<String> emailLiveData = new MutableLiveData<>();
 
@@ -29,9 +33,8 @@ public class MainViewModel extends BaseAndroidViewModel {
 
     private MutableLiveData<Boolean> validInputLiveData = new MutableLiveData<>();
 
-    public MainViewModel(Application application) {
-        super(application);
-        getMvvmApplication().getComponent().inject(this);
+    @Inject
+    MainViewModel() {
     }
 
     public LiveData<Boolean> createUser() {

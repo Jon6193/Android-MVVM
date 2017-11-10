@@ -7,7 +7,6 @@ import com.jonathanpetitfrere.mvvm.repository.api.UserApi;
 import com.jonathanpetitfrere.mvvm.repository.mapper.UserMapper;
 import com.jonathanpetitfrere.mvvm.repository.persistence.dao.UserDao;
 import com.jonathanpetitfrere.mvvm.repository.persistence.entity.User;
-import com.jonathanpetitfrere.mvvm.util.Transformers;
 
 import java.util.List;
 
@@ -34,20 +33,15 @@ public class UserRepository {
     UserMapper mapper;
 
     @Inject
-    Transformers transformers;
-
-    @Inject
     UserRepository() {}
 
     public LiveData<User> getUser(String email) {
         MutableLiveData<User> liveData = new MutableLiveData<>();
 
         userDao.loadUser(email)
-                .compose(transformers.applySchedulersToFlowable())
                 .subscribe(liveData::setValue, Timber::d);
 
         userApi.getUser(email)
-                .compose(transformers.applySchedulersToFlowable())
                 .map(mapper::toEntity)
                 .subscribe(userDao::saveUser, Timber::d);
 
@@ -58,11 +52,9 @@ public class UserRepository {
         MutableLiveData<List<User>> liveData = new MutableLiveData<>();
 
         userDao.loadUsers()
-                .compose(transformers.applySchedulersToFlowable())
                 .subscribe(liveData::setValue, Timber::d);
 
         userApi.getUsers()
-                .compose(transformers.applySchedulersToFlowable())
                 .flatMapIterable(users -> users)
                 .map(mapper::toEntity)
                 .subscribe(userDao::saveUser, Timber::d);
@@ -74,7 +66,6 @@ public class UserRepository {
         MutableLiveData<Boolean> liveData = new MutableLiveData<>();
 
         Completable.fromAction(() -> userDao.saveUser(user))
-                .compose(transformers.applySchedulersToCompletable())
                 .subscribe(() -> liveData.setValue(true), throwable -> {
                     Timber.d(throwable);
                     liveData.setValue(false);

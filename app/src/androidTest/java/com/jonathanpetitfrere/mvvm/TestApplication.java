@@ -1,7 +1,5 @@
 package com.jonathanpetitfrere.mvvm;
 
-import com.jonathanpetitfrere.mvvm.di.AppGraph;
-
 /**
  * @author jpetit
  */

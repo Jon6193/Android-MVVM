@@ -8,8 +8,11 @@ import android.text.Editable;
 import android.widget.Button;
 
 import com.jonathanpetitfrere.mvvm.R;
+import com.jonathanpetitfrere.mvvm.di.ViewModelFactory;
 import com.jonathanpetitfrere.mvvm.repository.persistence.entity.User;
 import com.jonathanpetitfrere.mvvm.ui.base.BaseActivity;
+
+import javax.inject.Inject;
 
 import butterknife.BindView;
 import butterknife.OnClick;
@@ -23,6 +26,9 @@ import static butterknife.OnTextChanged.Callback.AFTER_TEXT_CHANGED;
  */
 
 public class MainActivity extends BaseActivity {
+
+    @Inject
+    ViewModelFactory viewModelFactory;
 
     @BindView(R.id.main_recycler_view)
     RecyclerView recyclerView;
@@ -40,7 +46,7 @@ public class MainActivity extends BaseActivity {
         userRecyclerAdapter = new UserRecyclerAdapter();
         recyclerView.setAdapter(userRecyclerAdapter);
 
-        viewModel = ViewModelProviders.of(this).get(MainViewModel.class);
+        viewModel = ViewModelProviders.of(this, viewModelFactory).get(MainViewModel.class);
 
         viewModel.getUsers()
                 .observe(this, userRecyclerAdapter::setData);

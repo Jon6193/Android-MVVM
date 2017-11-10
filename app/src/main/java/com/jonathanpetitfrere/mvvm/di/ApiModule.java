@@ -21,7 +21,7 @@ import retrofit2.converter.gson.GsonConverterFactory;
  */
 
 @Module
-public class ApiModule {
+class ApiModule {
 
     @Singleton
     @Provides
