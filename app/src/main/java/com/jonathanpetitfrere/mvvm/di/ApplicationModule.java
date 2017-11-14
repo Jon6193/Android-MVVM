@@ -4,10 +4,8 @@ import android.content.Context;
 
 import com.jonathanpetitfrere.mvvm.MvvmApplication;
 
-import javax.inject.Singleton;
-
+import dagger.Binds;
 import dagger.Module;
-import dagger.Provides;
 
 /**
  * @author jpetit
@@ -18,11 +16,8 @@ import dagger.Provides;
         ApiModule.class,
         RepositoryModule.class
 })
-class ApplicationModule {
+abstract class ApplicationModule {
 
-    @Singleton
-    @Provides
-    Context provideContext(MvvmApplication application) {
-        return application;
-    }
+    @Binds
+    abstract Context provideContext(MvvmApplication application);
 }
